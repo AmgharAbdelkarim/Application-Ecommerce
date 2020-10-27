@@ -1,0 +1,19 @@
+{
+  "name": "aplication-ecommerce",
+  "version": "1.0.0",
+  "description": "Apllication Ecommerce",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AmgharAbdelkarim/Application-Ecommerce.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AmgharAbdelkarim/Application-Ecommerce/issues"
+  },
+  "homepage": "https://github.com/AmgharAbdelkarim/Application-Ecommerce#readme"
+}
