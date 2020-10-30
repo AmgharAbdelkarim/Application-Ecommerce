@@ -1,3 +1,4 @@
+import { AnyARecord } from 'dns';
 import {
   LOGIN_REQUEST,
   LOGIN_SUCCESS,
@@ -12,6 +13,8 @@ import {
   RequestSubscribeType,
   RequestSubscribeFailedType,
   RequestSubscribePayloadType,
+  updateCartType,
+  UPDATE_CART,
 } from './constants';
 
 export const LoginRequest = (
@@ -43,4 +46,9 @@ export const SubscribeRequest = (
 export const SubscribeFailed = (error: string): RequestSubscribeFailedType => ({
   type: SUBSCRIBE_FAILED,
   payload: error,
+});
+
+export const updateCart = (payload: any): updateCartType => ({
+  type: UPDATE_CART,
+  payload,
 });

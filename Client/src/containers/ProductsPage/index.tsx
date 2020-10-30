@@ -38,7 +38,9 @@ const ProductsPage = ({ Products, history, getProducts }: Props) => {
     if (Products.length === 0) getProducts();
   }, [getProducts]);
   const items = Products.map((e) => (
-    <Grid item xs={3} key={e}>
+    <Grid item xs={3} key={e} onClick={() => {
+      history.push('/products/' + e._id);
+    }}>
       <Card className={classes.root}>
         <CardActionArea>
           <CardMedia
@@ -49,14 +51,9 @@ const ProductsPage = ({ Products, history, getProducts }: Props) => {
             title="Contemplative Reptile"
           />
           <CardContent>
-            <button
-              onClick={() => {
-                history.push('/products/' + e._id);
-              }}
-            >
+          <Typography variant="body2" color="textSecondary" component="p">
               {e.title}
-            </button>
-
+            </Typography>
             <Typography variant="body2" color="textSecondary" component="p">
               Lizards are a widespread group of squamate reptiles, with over
               6,000 species, ranging across all continents except Antarctica

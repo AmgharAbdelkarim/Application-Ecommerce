@@ -1,5 +1,5 @@
 const path = require('path');
-
+require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
 
@@ -28,7 +28,7 @@ const auth = require('./middlewares/auth')
 
 
 app.use((req,res,next)=>{
-      User.findById('5f89ba7941af3523ebe99f49')
+      User.findById('5f9032079f209c11c8cf40aa')
      .then(user=>{
          req.user = user //return a sequelize object so we can applied all sequelize methods destroy ...
          next()
@@ -50,8 +50,8 @@ app.use(shopRoutes);
 app.use(errorController.get404);
 
 
-
-mongoose.connect('mongodb+srv://amghar_abdelkarim:amghar1234@cluster0-v98lb.mongodb.net/test?retryWrites=true&w=majority',
+console.log({a : process.env.CREDETIELS, b : process.env})
+mongoose.connect(`mongodb+srv://${process.env.CREDETIELS}:${process.env.PASSWORD}@cluster0-v98lb.mongodb.net/test?retryWrites=true&w=majority`,
   {
     useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true,
     poolSize: 5

@@ -6,6 +6,8 @@ import {
   GET_PRODUCT,
   GetProductsSuccessType,
   GET_PRODUCTS_SUCCESS,
+  postCartType,
+  POST_CART,
 } from './constants';
 
 export const getProducts = (history: any): GetProductsType => ({
@@ -21,4 +23,9 @@ export const GetProductsSuccess = (data: any[]): GetProductsSuccessType => ({
 export const getProduct = (id: string): GetProductType => ({
   type: GET_PRODUCT,
   payload: id,
+});
+
+export const postCart = (productId: string , quantity : string): postCartType => ({
+  type: POST_CART,
+  payload: {productId , quantity},
 });

@@ -195,7 +195,7 @@ const Navbar = (props: Props) => {
           <Typography
             className={classes.title}
             variant="h6"
-            onClick={() => history.push('/')}
+            onClick={() => history.push('/carts')}
             noWrap
           >
             Shop
@@ -218,7 +218,7 @@ const Navbar = (props: Props) => {
             <>
               {' '}
               <div className={classes.sectionDesktop}>
-                <IconButton aria-label="show 4 new mails" color="inherit">
+                <IconButton aria-label="show 4 new mails" color="inherit" >
                   <Badge badgeContent={0} color="secondary">
                     <ShoppingCartIcon />
                   </Badge>

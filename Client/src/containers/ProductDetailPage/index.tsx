@@ -1,10 +1,10 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Container from '@material-ui/core/Container';
 import { Grid, Paper } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { connect } from 'react-redux';
-import { getProducts } from '../../store/saga/products/action';
+import { getProducts , postCart } from '../../store/saga/products/action';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -22,8 +22,10 @@ interface Props {
   getProducts: any;
   [key: string]: any;
 }
-const ProductDetailPage = ({ getProducts, product }: Props) => {
+const ProductDetailPage = ({ getProducts, product, postCart }: Props) => {
   const classes = useStyles();
+  const [quantity, setQuantity] = useState(1);
+
   useEffect(() => {
     if (product.length === 0) getProducts();
   }, [getProducts]);
@@ -47,7 +49,12 @@ const ProductDetailPage = ({ getProducts, product }: Props) => {
               <p>price</p>
               <p>details</p>
               <p>quantity</p>
-              <button>ajouter</button>
+              <div id="quantity">
+                <input type="button" value="-" onClick={()=>setQuantity(quantity - 1)} />
+                <input type="button" value={quantity} />
+                <input type="button" value="+"  onClick={()=>setQuantity(quantity + 1)}/>
+              </div>
+              <button onClick={() => postCart(product[0]?._id,quantity)}>ajouter</button>
             </Paper>
           </Grid>
         </Grid>
@@ -67,6 +74,7 @@ const mapStateToProps = (state: any, props: ownProps) => {
 };
 const mapDispatchToState = {
   getProducts,
+  postCart
 };
 
 export default connect(mapStateToProps, mapDispatchToState)(ProductDetailPage);

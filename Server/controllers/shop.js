@@ -82,15 +82,17 @@ exports.getCart = async (req, res, next) => {
 exports.postCart = async (req, res, next) => {
   try {
     const prodId = req.body.productId;
+    const quantity = req.body.quantity;
     const product = await Product.findById(prodId);
     // const user = await User.findById(userId);
-    req.user.addToCart(product);
+    console.log({product , quantity})
+    const cart = req.user.addToCart(product, quantity);
+    console.log({ req : req.user})
+    res.send(req.user.cart)
   }
   catch {
     res.send('error');
-  }
-
-  
+  }  
 };
 
 exports.postCartDeleteProduct = (req, res, next) => {

@@ -4,7 +4,8 @@
   "description": "Apllication Ecommerce",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "concurrently \"cd Server && npm run start\" \"cd Client && npm run start\""
   },
   "repository": {
     "type": "git",
@@ -15,5 +16,10 @@
   "bugs": {
     "url": "https://github.com/AmgharAbdelkarim/Application-Ecommerce/issues"
   },
-  "homepage": "https://github.com/AmgharAbdelkarim/Application-Ecommerce#readme"
+  "homepage": "https://github.com/AmgharAbdelkarim/Application-Ecommerce#readme",
+  "dependencies": {
+    "concurrently": "^5.3.0",
+    "dotenv": "^8.2.0",
+    "reselect": "^4.0.0"
+  }
 }

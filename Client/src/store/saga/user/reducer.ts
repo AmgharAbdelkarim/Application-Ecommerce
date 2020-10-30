@@ -5,6 +5,7 @@ import {
   REQUEST_TYPE,
   SUBSCRIBE_FAILED,
   SUBSCRIBE_REQUEST,
+  UPDATE_CART,
 } from './constants';
 
 const initialState = {
@@ -25,11 +26,13 @@ export const AuthReducer = (state = initialState, action: REQUEST_TYPE) => {
     case LOGIN_REQUEST:
       return { ...state, isLoading: true };
     case LOGIN_SUCCESS:
-      return { ...state, ...action.payload, isLoading: true, error: null };
+      return { ...state, ...action.payload, isLoading: false, error: null };
     case LOGIN_FAILED:
       return { ...state, error: action.payload, isLoading: false };
     case SUBSCRIBE_FAILED:
       return { ...state, error: action.payload, isLoading: false };
+    case UPDATE_CART:
+        return { ...state, cart : action.payload};
     default:
       return state;
   }
