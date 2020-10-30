@@ -50,7 +50,7 @@ app.use(shopRoutes);
 app.use(errorController.get404);
 
 
-console.log({a : process.env.CREDETIELS, b : process.env})
+
 mongoose.connect(`mongodb+srv://${process.env.CREDETIELS}:${process.env.PASSWORD}@cluster0-v98lb.mongodb.net/test?retryWrites=true&w=majority`,
   {
     useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true,
