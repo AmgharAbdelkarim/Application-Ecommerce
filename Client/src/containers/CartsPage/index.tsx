@@ -9,45 +9,38 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import { cartSelector } from '../../store/saga/user/selectors';
 import { connect } from 'react-redux';
-import TableContent from './tableContent';
-const useStyles = makeStyles({
-  table: {
-    minWidth: 650,
-  },
-});
+import CartItem from './CartItem';
+import ButtonField from '../../components/Button';
+import { Box, Grid } from '@material-ui/core';
+import {deleteCartItem} from '../../store/saga/cart/actions';
 
-function createData(name: string, prix: number, quantity: number, sousTotal: number,) {
-  return { name, prix, quantity, sousTotal };
+
+export interface CartPageProps {
+  items: any[];
+  deleteCartItem: Function;
 }
 
 
 
-const CartsPage = ({items} : any) => {
-  const classes = useStyles();
-  const rows:any[] = items.map((item : any) => 
-    createData(item.productName, item.prix, item.quantity, item.quantity*item.prix)
-  );
+const CartsPage = ({items , deleteCartItem} : CartPageProps) => {
+  
+  
   return (
-    <TableContainer component={Paper}>
-      <Table className={classes.table} aria-label="simple table">
-        <TableHead>
-          <TableRow>
-            <TableCell>Product</TableCell>
-            <TableCell align="right">Prix</TableCell>
-            <TableCell align="right">Quantity</TableCell>
-            <TableCell align="right">Sous-Total</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {rows.map((row) => (
-            <TableContent row={row} />
+    <>
+      <Box paddingX={[3,6,12]} >
+          <Grid container>
+          {items.map((row: any) => (
+            <CartItem row={row} deleteCartItem={deleteCartItem} />
           ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
+          </Grid>
+      </Box>
+      </>
   );
 }
 const mapStateToProps = (state: any) => ({
   items: cartSelector(state)
 });
-export default connect(mapStateToProps)(CartsPage);
+const mapDispatchToProps = {
+  deleteCartItem
+};
+export default connect(mapStateToProps, mapDispatchToProps)(CartsPage);

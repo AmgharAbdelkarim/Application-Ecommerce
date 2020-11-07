@@ -1,3 +1,4 @@
+import { UPDATE_CART } from '../cart/constants';
 import {
   LOGIN_REQUEST,
   LOGIN_SUCCESS,
@@ -5,7 +6,6 @@ import {
   REQUEST_TYPE,
   SUBSCRIBE_FAILED,
   SUBSCRIBE_REQUEST,
-  UPDATE_CART,
 } from './constants';
 
 const initialState = {

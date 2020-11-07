@@ -36,34 +36,36 @@ const userSchema = new Schema({
 
 
 userSchema.methods.addToCart = function (product , quantity) {
-    const productindex = this.cart.items.findIndex(item => {
+    const productIndex = this.cart.items.findIndex(item => {
         return item.productId.toString() === product._id.toString()
     })
-    let newquantity = quantity;
-    const updatedCartitems = [...this.cart.items]
-    if (productindex >= 0) {
-        newquantity = this.cart.items[productindex].quantity + quantity;
-        updatedCartitems[productindex].quantity = newquantity;                        
+    let newQuantity = quantity;
+    const updateCartItems = [...this.cart.items]
+    if (productIndex >= 0) {
+        newQuantity = this.cart.items[productIndex].quantity + quantity;
+        updateCartItems[productIndex].quantity = newQuantity;                        
     }
     else {
-        updatedCartitems.push({
+        updateCartItems.push({
             productId: product._id
-            , quantity: newquantity
+            , quantity: newQuantity
         })
     }
-    this.cart = { items: updatedCartitems }
+    this.cart = { items: updateCartItems }
                 
     return this.save();
         
 };
-userSchema.methods.DeleteCartitems = function (Id) {
+userSchema.methods.DeleteCartitems = function (prodId)  {
+    console.log(this , prodId)
     const updatedCartItems = this.cart.items.filter(item => {
-        return item.productId.toString() !== Id.toString();
+        return item.productId.toString() !== prodId.toString();
                     
     });
     this.cart = { items: updatedCartItems }
     return this.save()
 };
+
 userSchema.methods.clearCart = function () {
     this.cart = { items: [] }
     return this.save()

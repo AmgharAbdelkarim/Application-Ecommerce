@@ -4,7 +4,8 @@ import Container from '@material-ui/core/Container';
 import { Grid, Paper } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { connect } from 'react-redux';
-import { getProducts , postCart } from '../../store/saga/products/action';
+import { getProducts } from '../../store/saga/products/action';
+import {postCart} from '../../store/saga/cart/actions';
 
 const useStyles = makeStyles((theme) => ({
   root: {
