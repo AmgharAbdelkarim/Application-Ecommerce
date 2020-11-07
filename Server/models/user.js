@@ -71,5 +71,19 @@ userSchema.methods.clearCart = function () {
     return this.save()
 };
 
+userSchema.methods.updateCartItemQuantity = function (product, quantity) {
+    
+    const productIndex = this.cart.items.findIndex(item => {
+        return item.productId.toString() === product._id.toString()
+    })
+    let newQuantity = quantity;
+    const updateCartItems = [...this.cart.items]
+    if (productIndex >= 0) updateCartItems[productIndex].quantity = newQuantity;                        
+       
+    this.cart = { items: updateCartItems }
+                
+    return this.save();
+        
+};
 module.exports = mongoose.model('User' , userSchema)
 

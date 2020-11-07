@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Box, Grid, Typography } from '@material-ui/core';
 import ButtonField from '../../components/Button';
@@ -7,11 +7,17 @@ import ButtonField from '../../components/Button';
 export interface CartItemProps {
   row: any;
   deleteCartItem: Function;
+  updateCartItemQuantity: Function;
 }
 
 
-const CartItem = ({row , deleteCartItem} : CartItemProps) => {
+const CartItem = ({row , deleteCartItem  , updateCartItemQuantity} : CartItemProps) => {
   const [quantity, setQuantity] = useState(row.quantity);
+  
+  useEffect(() => {
+    updateCartItemQuantity({ productId: row._id, quantity })
+  }, [quantity]);
+  
   return (
         <>  
       <Grid xs={3} item key={row.name}>

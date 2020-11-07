@@ -12,17 +12,18 @@ import { connect } from 'react-redux';
 import CartItem from './CartItem';
 import ButtonField from '../../components/Button';
 import { Box, Grid } from '@material-ui/core';
-import {deleteCartItem} from '../../store/saga/cart/actions';
+import {deleteCartItem , updateCartItemQuantity} from '../../store/saga/cart/actions';
 
 
 export interface CartPageProps {
   items: any[];
   deleteCartItem: Function;
+  updateCartItemQuantity: Function;
 }
 
 
 
-const CartsPage = ({items , deleteCartItem} : CartPageProps) => {
+const CartsPage = ({items , deleteCartItem , updateCartItemQuantity} : CartPageProps) => {
   
   
   return (
@@ -30,7 +31,7 @@ const CartsPage = ({items , deleteCartItem} : CartPageProps) => {
       <Box paddingX={[3,6,12]} >
           <Grid container>
           {items.map((row: any) => (
-            <CartItem row={row} deleteCartItem={deleteCartItem} />
+            <CartItem row={row} deleteCartItem={deleteCartItem} updateCartItemQuantity={updateCartItemQuantity} />
           ))}
           </Grid>
       </Box>
@@ -41,6 +42,7 @@ const mapStateToProps = (state: any) => ({
   items: cartSelector(state)
 });
 const mapDispatchToProps = {
-  deleteCartItem
+  deleteCartItem,
+  updateCartItemQuantity
 };
 export default connect(mapStateToProps, mapDispatchToProps)(CartsPage);

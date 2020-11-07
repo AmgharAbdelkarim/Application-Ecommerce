@@ -4,7 +4,9 @@ import {
     deleteCartItemType,
     DELETE_CART_ITEM,
     updateCartType,
-    UPDATE_CART
+    UPDATE_CART,
+    updateCartItemQuantityType,
+    UPDATE_CART_ITEM_QUANTITY
 } from './constants';
 
 export const postCart = (productId: string, quantity: string): postCartType => ({
@@ -20,4 +22,9 @@ export const deleteCartItem = (productId: string): deleteCartItemType => ({
 export const updateCart = (payload: any): updateCartType => ({
     type: UPDATE_CART,
     payload,
-  });
+});
+
+export const updateCartItemQuantity = (payload: {productId : string , quantity : number}): updateCartItemQuantityType => ({
+    type: UPDATE_CART_ITEM_QUANTITY,
+    payload,
+});
