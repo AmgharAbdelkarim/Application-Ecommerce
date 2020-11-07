@@ -12,6 +12,8 @@ import {
   RequestSubscribeType,
   RequestSubscribeFailedType,
   RequestSubscribePayloadType,
+  LogOutType,
+  LOG_OUT,
 } from './constants';
 
 export const LoginRequest = (
@@ -33,6 +35,10 @@ export const LoginFailed = (error: string): RequestFailedType => ({
   payload: error,
 });
 
+export const LogOut = (): LogOutType => ({
+  type: LOG_OUT,
+});
+
 export const SubscribeRequest = (
   payload: RequestSubscribePayloadType,
 ): RequestSubscribeType => ({
@@ -44,7 +50,3 @@ export const SubscribeFailed = (error: string): RequestSubscribeFailedType => ({
   type: SUBSCRIBE_FAILED,
   payload: error,
 });
-
-
-
-

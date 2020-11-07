@@ -5,13 +5,16 @@ const User = require('../models/user')
 
 
 
-exports.getProducts = (req, res, next) => {
-  Product.find().then((products)=>{
-    console.log(products)
-    res.send(products)}).catch(err => console.log(err))
+exports.getProducts = async (req, res, next) => {
+  try {
+    const products = await Product.find();
+    console.log(products);
+    res.send(products);
+  }
+  catch {
+    res.send("retrieve product failed")
+  };
 
-  
- 
 };
 exports.postOrder = (req,res,next)=>{
   req.user.populate('cart.items.productId').execPopulate()
@@ -78,22 +81,23 @@ exports.getCart = async (req, res, next) => {
 };
 
 exports.postCart = async (req, res, next) => {
+  const prodId = req.body.productId;
+  const quantity = req.body.quantity;
   try {
-    const prodId = req.body.productId;
-    const quantity = req.body.quantity;
     const product = await Product.findById(prodId);
-    const cart = req.user.addToCart(product, quantity);
-    res.send(req.user.cart)
+    const userInfo = await req.user.addToCart(product, quantity);
+    res.send(userInfo)
   }
   catch {
     res.send('error');
   }  
 };
 
-exports.postCartDeleteProduct = (req, res, next) => {
+exports.postCartDeleteProduct = async (req, res, next) => {
   try {
     const prodId = req.body.productId;
-    req.user.DeleteCartitems(prodId).then((result)=>res.send(result))
+    const user = await req.user.DeleteCartitems(prodId);
+    res.send(user);
   }
   catch {
     res.send("error")
@@ -107,7 +111,7 @@ exports.updateCartItemQuantity = async (req, res, next) => {
     const quantity = req.body.quantity;
     const product = await Product.findById(prodId);
     const userInfo = await req.user.updateCartItemQuantity(product, quantity);
-    res.send(userInfo.cart)
+    res.send(userInfo)
   }
   catch {
     res.send('error');

@@ -3,13 +3,7 @@ const mongodb = require('mongodb')
 
 const objectid = mongodb.ObjectID
 
-exports.getAddProduct = (req, res, next) => {
-  res.render('admin/edit-product', {
-    pageTitle: 'Add Product',
-    path: '/admin/add-product',
-    editing: false
-  });
-};
+
 exports.postAddProduct = (req, res, next) => {
   const title = req.body.title;
   const imageUrl = req.body.imageUrl;
@@ -29,19 +23,18 @@ exports.postAddProduct = (req, res, next) => {
 
 
 
-exports.getProducts =(req,res,next)=>{
-  Product.find().then((products)=>{
-    
-    res.render('admin/products', {
-      pageTitle: 'Products',
-      path: '/admin/products',
-      editing: false ,
-      prods : products
-    });
-  }).catch((err)=>{
-    console.log(err)
-  })
-}
+// exports.getProducts =(req,res,next)=>{
+//   Product.find().then((products)=>{
+//     res.render('admin/products', {
+//       pageTitle: 'Products',
+//       path: '/admin/products',
+//       editing: false ,
+//       prods : products
+//     });
+//   }).catch((err)=>{
+//     console.log(err)
+//   })
+// }
 
 exports.getEditProduct = (req, res, next)=>{
   const prodId = req.params.productId;

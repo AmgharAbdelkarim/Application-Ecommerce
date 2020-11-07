@@ -35,7 +35,8 @@ const userSchema = new Schema({
 
 
 
-userSchema.methods.addToCart = function (product , quantity) {
+userSchema.methods.addToCart =  function (product, quantity) {
+    console.log("i am here")
     const productIndex = this.cart.items.findIndex(item => {
         return item.productId.toString() === product._id.toString()
     })
@@ -56,8 +57,8 @@ userSchema.methods.addToCart = function (product , quantity) {
     return this.save();
         
 };
-userSchema.methods.DeleteCartitems = function (prodId)  {
-    console.log(this , prodId)
+userSchema.methods.DeleteCartitems = function (prodId) {
+    console.log("i am here")
     const updatedCartItems = this.cart.items.filter(item => {
         return item.productId.toString() !== prodId.toString();
                     

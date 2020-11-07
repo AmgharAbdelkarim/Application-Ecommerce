@@ -13,7 +13,7 @@ export function* GetProducts({ payload }: { type: string; payload?: any }) {
   } catch {}
 }
 
-export function* GetProduct() { }
+export function* GetProduct() {}
 
 export function* watchGetProducts() {
   yield takeLatest(GET_PRODUCTS, GetProducts);
@@ -21,6 +21,5 @@ export function* watchGetProducts() {
 export function* watchGetProduct() {
   yield takeLatest(GET_PRODUCT, GetProduct);
 }
-
 
 export default [watchGetProducts, watchGetProduct];

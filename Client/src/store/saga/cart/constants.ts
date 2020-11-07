@@ -1,7 +1,6 @@
 export const UPDATE_CART = '@user/UPDATE_CART';
 export const DELETE_CART_ITEM = '@user/DELETE_CART_ITEM';
-export const POST_CART: '@user/POST_CART' =
-  '@user/POST_CART';
+export const POST_CART: '@user/POST_CART' = '@user/POST_CART';
 export const UPDATE_CART_ITEM_QUANTITY = '@user/UPDATE_CART_ITEM_QUANTITY';
 
 export interface updateCartType {
@@ -18,6 +17,6 @@ export interface updateCartItemQuantityType {
 }
 
 export interface postCartType {
-    type: string;
-    payload: any;
+  type: string;
+  payload: any;
 }

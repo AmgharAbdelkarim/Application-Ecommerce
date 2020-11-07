@@ -1,14 +1,10 @@
 import React, { useEffect } from 'react';
-import Card from '@material-ui/core/Card';
-import CardActionArea from '@material-ui/core/CardActionArea';
-import CardContent from '@material-ui/core/CardContent';
-import Link from '@material-ui/core/Link';
-import CardMedia from '@material-ui/core/CardMedia';
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import { connect } from 'react-redux';
 import { getProducts } from '../../store/saga/products/action';
+import ProductCard from './ProductCard';
+import { Box } from '@material-ui/core';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -33,42 +29,25 @@ interface Props {
 }
 const ProductsPage = ({ Products, history, getProducts }: Props) => {
   const classes = useStyles();
-  console.log(Products);
+
   useEffect(() => {
     if (Products.length === 0) getProducts();
   }, [getProducts]);
-  const items = Products.map((e) => (
-    <Grid item xs={3} key={e} onClick={() => {
-      history.push('/products/' + e._id);
-    }}>
-      <Card className={classes.root}>
-        <CardActionArea>
-          <CardMedia
-            component="img"
-            alt="Contemplative Reptile"
-            height="140"
-            image="/static/images/cards/contemplative-reptile.jpg"
-            title="Contemplative Reptile"
-          />
-          <CardContent>
-          <Typography variant="body2" color="textSecondary" component="p">
-              {e.title}
-            </Typography>
-            <Typography variant="body2" color="textSecondary" component="p">
-              Lizards are a widespread group of squamate reptiles, with over
-              6,000 species, ranging across all continents except Antarctica
-            </Typography>
-          </CardContent>
-        </CardActionArea>
-      </Card>
-    </Grid>
-  ));
+
   return (
-    <div className={classes.root}>
+    <Box className={classes.root} paddingX={[3, 6, 12]} paddingY={4}>
       <Grid container spacing={3}>
-        {items}
+        {Products.map((product) => (
+          <ProductCard
+            product={product}
+            key={product._id}
+            clickHandler={() => {
+              history.push('/products/' + product._id);
+            }}
+          />
+        ))}
       </Grid>
-    </div>
+    </Box>
   );
 };
 

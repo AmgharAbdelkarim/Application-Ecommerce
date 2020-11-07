@@ -18,6 +18,7 @@ const InputField = (props: Props) => {
       variant="outlined"
       value={values[name]}
       name={name}
+      fullWidth
     />
   );
 };

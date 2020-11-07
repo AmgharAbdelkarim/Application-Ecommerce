@@ -3,6 +3,7 @@ import TextInput from '../../components/inputField';
 import PasswordInput from '../../components/inputField/password';
 import ButtonField from '../../components/Button';
 import { Formik, FormikProps, Form } from 'formik';
+import { Grid } from '@material-ui/core';
 
 interface InitialValues {
   email: string;
@@ -44,12 +45,32 @@ const LoginPage = ({ submit, history }: Props) => {
         {(props: FormikProps<InitialValues>) => {
           return (
             <Form>
-              <TextInput label="email" name="email" {...props} />
-              <TextInput label="text" name="firstName" {...props} />
-              <TextInput label="text" name="lastName" {...props} />
-              <TextInput label="text" name="address" {...props} />
-              <PasswordInput {...props} />
-              <ButtonField type="submit">Sign UP</ButtonField>
+              <Grid container>
+                <Grid item xs={12}>
+                  <TextInput label="email" name="email" {...props} />
+                </Grid>
+                <Grid item xs={12}>
+                  <PasswordInput {...props} label="Password" />
+                </Grid>
+                <Grid item xs={12}>
+                  <PasswordInput {...props} label="Repeat password" />
+                </Grid>
+                <Grid item xs={12}>
+                  <TextInput label="firstName" name="firstName" {...props} />
+                </Grid>
+                <Grid item xs={12}>
+                  <TextInput label="lastName" name="lastName" {...props} />
+                </Grid>
+                <Grid item xs={12}>
+                  <TextInput label="address" name="address" {...props} />
+                </Grid>
+                <Grid item xs={12}>
+                  <TextInput label="City" name="City" {...props} />
+                </Grid>
+                <Grid item xs={12}>
+                  <ButtonField type="submit">Sign UP</ButtonField>
+                </Grid>
+              </Grid>
             </Form>
           );
         }}

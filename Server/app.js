@@ -27,15 +27,15 @@ const userRoutes = require('./routes/users');
 const auth = require('./middlewares/auth')
 
 
-app.use((req,res,next)=>{
-      User.findById('5f9032079f209c11c8cf40aa')
-     .then(user=>{
-         req.user = user //return a sequelize object so we can applied all sequelize methods destroy ...
-         next()
-      }).catch((err)=>{
-          console.log(err)
-    })
-  })
+// app.use((req,res,next)=>{
+//       User.findById('5f9032079f209c11c8cf40aa')
+//      .then(user=>{
+//          req.user = user //return a sequelize object so we can applied all sequelize methods destroy ...
+//          next()
+//       }).catch((err)=>{
+//           console.log(err)
+//     })
+//   })
     
 
 
@@ -43,7 +43,7 @@ app.use((req,res,next)=>{
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(userRoutes);
-app.use('/admin', adminRoutes);
+// app.use('/admin', adminRoutes);
 app.use(shopRoutes);
 
 
@@ -59,7 +59,7 @@ mongoose.connect(`mongodb+srv://${process.env.CREDETIELS}:${process.env.PASSWORD
   .then((result) => {
     console.log("connected 5000")
     app.listen(5000)
-  }).catch(err => console.log(err));
+  }).catch(err => res.send(err));
 
 
 

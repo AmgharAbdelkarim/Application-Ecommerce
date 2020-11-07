@@ -22,4 +22,3 @@ export const getProduct = (id: string): GetProductType => ({
   type: GET_PRODUCT,
   payload: id,
 });
-

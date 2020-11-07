@@ -7,8 +7,24 @@ import { ProductReducer } from './saga/products/reducer';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { combineReducers } from 'redux';
 import { AuthReducer } from './saga/user/reducer';
+import { getUserWithToken } from './api';
+
 export const ConfigureStore = (initialState?: any) => {
   const sagaMiddleware = createSagaMiddleware();
+  // const token = localStorage.getItem("token");
+  // var fetchDta = () => {
+  //   if (token)
+  //     return getUserWithToken(token).then(response => {
+  //       const { email, lastName, firstName, password, address, cart } = response.data;
+  //       return {
+  //         AuthReducer: {
+  //           email, lastName, firstName, password, address, cart , isLoading : false , error: null
+  //         },
+  //         ProductReducer : []
+  //       }
+  //      });
+
+  // };
 
   const enhancer = composeWithDevTools(applyMiddleware(sagaMiddleware));
   const store = createStore(

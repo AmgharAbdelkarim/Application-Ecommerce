@@ -3,6 +3,7 @@ export const LOGIN_SUCCESS = '@user/login_success';
 export const LOGIN_FAILED = '@user/login_failed';
 export const SUBSCRIBE_REQUEST = '@user/subscribe_request';
 export const SUBSCRIBE_FAILED = '@user/subscribe_failed';
+export const LOG_OUT = '@user/LOG_OUT';
 
 export interface RequestLoginPayloadType {
   login: string;
@@ -35,6 +36,10 @@ export interface RequestFailedType {
   type: string;
   payload?: any;
 }
+export interface LogOutType {
+  type: typeof LOG_OUT;
+  payload?: any;
+}
 
 interface User {
   email: string;
@@ -64,9 +69,9 @@ export interface updateCartType {
   payload: any;
 }
 
-
 export type REQUEST_TYPE =
   | RequestLoginType
   | RequestSuccessType
   | RequestFailedType
-  | updateCartType;
+  | updateCartType
+  | LogOutType;

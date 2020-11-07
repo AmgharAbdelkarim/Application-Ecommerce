@@ -8,16 +8,17 @@ interface Props {
 }
 
 const PasswordField = (props: Props) => {
-  const { values, handleChange, handleBlur } = props;
+  const { values, handleChange, handleBlur, label } = props;
   return (
     <TextField
       type="password"
       variant="outlined"
-      label="Password"
+      label={label}
       name="password"
       value={values.password}
       onChange={handleChange}
       onBlur={handleBlur}
+      fullWidth
     />
   );
 };

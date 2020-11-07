@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   fade,
   makeStyles,
@@ -19,6 +19,9 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import { withRouter } from 'react-router';
+import { getUserWithToken } from '../../store/api';
+import { connect } from 'react-redux';
+import { LogOut } from '../../store/saga/user/action';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -94,6 +97,7 @@ const Navbar = (props: Props) => {
   const token = localStorage.getItem('token');
   console.log(token);
   const { history } = props;
+
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const [
@@ -139,6 +143,7 @@ const Navbar = (props: Props) => {
           localStorage.setItem('token', '');
           setAnchorEl(null);
           handleMobileMenuClose();
+          props.LogOut();
           history.push('/');
         }}
       >
@@ -218,7 +223,7 @@ const Navbar = (props: Props) => {
             <>
               {' '}
               <div className={classes.sectionDesktop}>
-                <IconButton aria-label="show 4 new mails" color="inherit" >
+                <IconButton aria-label="show 4 new mails" color="inherit">
                   <Badge badgeContent={0} color="secondary">
                     <ShoppingCartIcon />
                   </Badge>
@@ -270,4 +275,8 @@ const Navbar = (props: Props) => {
   );
 };
 
-export default withRouter(Navbar);
+const mapDispatchToProps = {
+  LogOut,
+};
+
+export default connect(null, mapDispatchToProps)(withRouter(Navbar));

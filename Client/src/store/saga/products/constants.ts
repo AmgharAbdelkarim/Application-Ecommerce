@@ -17,7 +17,6 @@ export interface GetProductType {
   payload: string;
 }
 
-
 export type PRODUCT_TYPE =
   | GetProductsType
   | GetProductType
