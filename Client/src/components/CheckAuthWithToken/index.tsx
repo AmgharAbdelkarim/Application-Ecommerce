@@ -4,38 +4,37 @@ import { getUserWithToken } from '../../store/api';
 import { LoginSuccess } from '../../store/saga/user/action';
 
 interface Props {
-    Component: any;
-    LoginSuccess: Function;
+  Component: any;
+  LoginSuccess: Function;
 }
 
 const CheckAuthWithToken = ({ Component, LoginSuccess, ...props }: Props) => {
-    const [render, setRender] = useState(false);
-    const token = localStorage.getItem("token");
-    useEffect(() => {
-        if (token)
-            getUserWithToken(token).then(response => {
-                const { email, lastName, firstName, password, address, cart } = response.data;
-                
-                LoginSuccess({ email, lastName, firstName, password, address, cart });
-                setRender(true);
-            });
-    }, []);
-    
-    if (!token) {
-        return <Component  {...props} />;
-    }
-    
+  const [render, setRender] = useState(false);
+  const token = localStorage.getItem('token');
+  useEffect(() => {
+    if (token)
+      getUserWithToken(token).then((response) => {
+        const {
+          email,
+          lastName,
+          firstName,
+          password,
+          address,
+          cart,
+        } = response.data;
 
-    return (
-        <>
-            { render && <Component  {...props} />}
-        </>
-        
-        );
- 
+        LoginSuccess({ email, lastName, firstName, password, address, cart });
+        setRender(true);
+      });
+  }, []);
 
+  if (!token) {
+    return <Component {...props} />;
+  }
+
+  return <>{render && <Component {...props} />}</>;
 };
 const mapDispatchToProps = {
-    LoginSuccess,
-}
-export default connect(null , mapDispatchToProps)(CheckAuthWithToken);
+  LoginSuccess,
+};
+export default connect(null, mapDispatchToProps)(CheckAuthWithToken);

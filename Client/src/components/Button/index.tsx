@@ -9,7 +9,7 @@ interface Props {
 const ButtonField = (props: Props) => {
   const { type, children, clickHandler } = props;
   return (
-    <Button type={type} onClick={clickHandler}>
+    <Button type={type} onClick={clickHandler} {...props}>
       {children}
     </Button>
   );

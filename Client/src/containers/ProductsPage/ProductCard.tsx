@@ -35,9 +35,8 @@ const ProductCard = ({ product, clickHandler }: Props) => {
 
   return (
     <>
-      
-      <Grid item xs={3} onClick={clickHandler} >
-        <Card className={classes.root} >
+      <Grid item xs={3} onClick={clickHandler}>
+        <Card className={classes.root}>
           <CardActionArea>
             <CardMedia
               component="img"
@@ -47,7 +46,7 @@ const ProductCard = ({ product, clickHandler }: Props) => {
               title={product.title}
             />
             <CardContent>
-              <Typography variant="h5" color="textSecondary" component="p" >
+              <Typography variant="h5" color="textSecondary" component="p">
                 {product.title}
               </Typography>
               <Typography variant="h6" color="textSecondary" component="p">
@@ -63,8 +62,7 @@ const ProductCard = ({ product, clickHandler }: Props) => {
             </CardContent>
           </CardActionArea>
         </Card>
-        </Grid>
-       
+      </Grid>
     </>
   );
 };

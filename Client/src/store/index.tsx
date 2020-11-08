@@ -11,7 +11,7 @@ import { getUserWithToken } from './api';
 
 export const ConfigureStore = (initialState?: any) => {
   const sagaMiddleware = createSagaMiddleware();
-  
+
   const enhancer = composeWithDevTools(applyMiddleware(sagaMiddleware));
   const store = createStore(
     combineReducers({ ProductReducer, AuthReducer }),

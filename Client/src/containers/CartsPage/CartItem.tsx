@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useLayoutEffect, useMemo, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Box, Grid } from '@material-ui/core';
 import ButtonField from '../../components/Button';
@@ -17,10 +17,10 @@ const CartItem = ({
 }: CartItemProps) => {
   const [quantity, setQuantity] = useState(row.quantity);
 
-  useEffect(() => {
-    updateCartItemQuantity({ productId: row._id, quantity });
+  useLayoutEffect(() => {
+    quantity && updateCartItemQuantity({ productId: row._id, quantity });
   }, [quantity]);
-  
+
   return (
     <>
       <Grid xs={4} item alignItems="center">
