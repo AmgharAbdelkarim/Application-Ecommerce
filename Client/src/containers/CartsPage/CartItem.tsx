@@ -20,7 +20,7 @@ const CartItem = ({
   useEffect(() => {
     updateCartItemQuantity({ productId: row._id, quantity });
   }, [quantity]);
-
+  
   return (
     <>
       <Grid xs={4} item alignItems="center">

@@ -71,8 +71,8 @@ exports.getIndex = (req, res, next) => {
 
 exports.getCart = async (req, res, next) => {
   try {
-    const products = await req.user.populate('cart.items.productId').execPopulate();
-    res.send(products)
+    const cart = await req.user.populate('cart.items.productId').execPopulate();
+    res.send(cart);
    }
   catch {
     res.send("no cart")
@@ -96,8 +96,9 @@ exports.postCart = async (req, res, next) => {
 exports.postCartDeleteProduct = async (req, res, next) => {
   try {
     const prodId = req.body.productId;
-    const user = await req.user.DeleteCartitems(prodId);
-    res.send(user);
+    await req.user.DeleteCartitems(prodId);
+    const cart = await req.user.populate('cart.items.productId').execPopulate();
+    res.send(cart);
   }
   catch {
     res.send("error")
@@ -110,8 +111,9 @@ exports.updateCartItemQuantity = async (req, res, next) => {
     const prodId = req.body.productId;
     const quantity = req.body.quantity;
     const product = await Product.findById(prodId);
-    const userInfo = await req.user.updateCartItemQuantity(product, quantity);
-    res.send(userInfo)
+    await req.user.updateCartItemQuantity(product, quantity);
+    const cart = await req.user.populate('cart.items.productId').execPopulate();
+    res.send(cart);
   }
   catch {
     res.send('error');

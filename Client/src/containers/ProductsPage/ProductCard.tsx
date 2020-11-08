@@ -9,6 +9,7 @@ import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import { connect } from 'react-redux';
 import { getProducts } from '../../store/saga/products/action';
+import { Box } from '@material-ui/core';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -27,15 +28,16 @@ const useStyles = makeStyles((theme: Theme) =>
 
 interface Props {
   product: any;
-  clickHandler: Function;
+  clickHandler: any;
 }
 const ProductCard = ({ product, clickHandler }: Props) => {
   const classes = useStyles();
 
   return (
     <>
-      <Grid item xs={3} onClick={clickHandler}>
-        <Card className={classes.root}>
+      
+      <Grid item xs={3} onClick={clickHandler} >
+        <Card className={classes.root} >
           <CardActionArea>
             <CardMedia
               component="img"
@@ -45,7 +47,7 @@ const ProductCard = ({ product, clickHandler }: Props) => {
               title={product.title}
             />
             <CardContent>
-              <Typography variant="h5" color="textSecondary" component="p">
+              <Typography variant="h5" color="textSecondary" component="p" >
                 {product.title}
               </Typography>
               <Typography variant="h6" color="textSecondary" component="p">
@@ -61,7 +63,8 @@ const ProductCard = ({ product, clickHandler }: Props) => {
             </CardContent>
           </CardActionArea>
         </Card>
-      </Grid>
+        </Grid>
+       
     </>
   );
 };

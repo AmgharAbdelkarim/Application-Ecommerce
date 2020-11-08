@@ -3,7 +3,7 @@ import { baseUrl } from '../utils/api';
 
 export const getUserWithToken = (token: string) => {
   console.log(token);
-  return axios.get(baseUrl + '/getUserWithToken', {
+  return axios.get(baseUrl + '/cart', {
     headers: {
       Authorization: `Bearer ${token}`,
     },
