@@ -8,7 +8,7 @@ import {
   updateCartItemQuantity,
 } from '../../store/saga/cart/actions';
 import TypographyVariant from '../../components/Typography';
-import { StyledTypographyVariant } from './style';
+import { StyledBox, StyledTypographyVariant } from './style';
 
 export interface CartPageProps {
   items: any[];
@@ -23,7 +23,7 @@ const CartsPage = ({
 }: CartPageProps) => {
   return (
     <>
-      <Box paddingX={[3, 6, 12]} paddingY={4}>
+      <StyledBox paddingX={[3, 6, 12]} paddingY={4} >
         <TypographyVariant variant="h2" component="h2">
           {' '}
           Shopping cart
@@ -49,7 +49,7 @@ const CartsPage = ({
             Please add item to your cart
           </TypographyVariant>
         )}
-      </Box>
+      </StyledBox>
     </>
   );
 };

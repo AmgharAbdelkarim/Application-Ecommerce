@@ -95,7 +95,7 @@ const Navbar = (props: Props) => {
 
   return (
     <div>
-      <AppBar color="transparent" style={{ color: '#60FCF1' }}>
+      <AppBar  style={{ color: '#60FCF1' }}>
         <Toolbar>
           <MenuDrawer
             clickHandler={(path: string) => history.push(path)}

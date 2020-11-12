@@ -14,6 +14,7 @@ import { Provider } from 'react-redux';
 import { ConfigureStore } from './store';
 import LayoutPage from './containers/LayoutPage';
 import Footer from './containers/Footer';
+import AuthenticationPage from './containers/AuthentificationPage';
 
 const App = () => {
   const store = ConfigureStore();
@@ -27,8 +28,7 @@ const App = () => {
               <Route exact path="/" component={HomePage} />
               <Route exact path="/products" component={ProductsPage} />
               <Route path="/products/:id" component={ProductDetailPage} />
-              <Route path="/LoginPage" component={LoginPage} />
-              <Route path="/SubscribePage" component={SubscribePage} />
+              <Route path="/LoginPage" component={AuthenticationPage} />
               <Route path="/carts" component={CartsPage} />
             </Switch>
           }

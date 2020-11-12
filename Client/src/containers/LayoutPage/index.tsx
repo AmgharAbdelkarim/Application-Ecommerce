@@ -10,7 +10,7 @@ const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     gridContainer: {
       background: '#1F2732',
-      height: '100vh',
+      height: '100%',
     },
     gridHeader: {
       position: 'fixed',
@@ -18,10 +18,11 @@ const useStyles = makeStyles((theme: Theme) =>
       left: 'auto',
       right: '0',
       width: '100%',
+      zIndex: 9999,
     },
     gridBody: {
       position: 'inherit',
-      marginTop: '80px',
+      marginTop: '64px',
     },
     gridFooter: {
       position: 'inherit',
@@ -34,7 +35,7 @@ const LayoutPage = (props: Props) => {
   const { header, body, Footer } = props;
   const styles = useStyles();
   return (
-    <Grid container classes={{ root: styles.gridContainer }}>
+    <Grid container alignContent="space-between" classes={{ root: styles.gridContainer }}>
       <Grid classes={{ root: styles.gridHeader }} xs={12} item>
         {header}
       </Grid>
