@@ -1,4 +1,4 @@
-import React, { FunctionComponentElement } from 'react';
+import React from 'react';
 import {
   makeStyles,
   Theme,

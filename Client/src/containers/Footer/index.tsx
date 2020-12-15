@@ -3,7 +3,7 @@ import { Grid, Box } from '@material-ui/core';
 
 const Footer = () => {
   return (
-    <Box>
+    <Box  id="footer">
       <Grid container alignItems="center">
         <Grid xs={6} item>
           E-commerce web site

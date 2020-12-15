@@ -1,8 +1,8 @@
 import { Box, createStyles, Divider, Grid, makeStyles, Theme } from '@material-ui/core';
+import { RouteComponentProps } from 'react-router-dom';
 import React from 'react';
 import LoginPage from '../LoginPage';
 import SubscribePage from '../SubscribePage';
-
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
@@ -12,11 +12,11 @@ const useStyles = makeStyles((theme: Theme) =>
     
   }),
 );
-const AuthenticationPage = ({ history }: any) => {
+const AuthenticationPage = ({ history }: {history : RouteComponentProps}) => {
     const classes = useStyles();
   return (
           
-          <Grid container alignItems="center" classes={{root : classes.root}} >
+          <Grid id="content" container alignItems="center" classes={{root : classes.root}} >
               <Grid xs={5} item>
                   <LoginPage history={history} />
               </Grid>

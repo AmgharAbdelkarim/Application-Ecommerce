@@ -1,7 +1,7 @@
 # E-commerce Apllication.
 
 ## Introduction
-thi is an Ecommerce Application Develop with React(TypeScript) & ExpressJs 
+this is an Ecommerce Application Develop with React(TypeScript) & ExpressJs 
 
 ## Usage
 

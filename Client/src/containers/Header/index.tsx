@@ -12,17 +12,12 @@ import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import InputBase from '@material-ui/core/InputBase';
 import Badge from '@material-ui/core/Badge';
-import MenuItem from '@material-ui/core/MenuItem';
-import Menu from '@material-ui/core/Menu';
-import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
-import AccountCircle from '@material-ui/icons/AccountCircle';
-import MoreIcon from '@material-ui/icons/MoreVert';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import { withRouter } from 'react-router';
 import { connect } from 'react-redux';
 import { LogOut } from '../../store/saga/user/action';
-import MenuDrawer from '../MenuDrawer';
+import MenuDrawer from '../../components/MenuDrawer';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -94,8 +89,8 @@ const Navbar = (props: Props) => {
   const classes = useStyles();
 
   return (
-    <div>
-      <AppBar  style={{ color: '#60FCF1' }}>
+    <React.Fragment>
+      <AppBar id="header"  style={{ color: '#60FCF1' }}>
         <Toolbar>
           <MenuDrawer
             clickHandler={(path: string) => history.push(path)}
@@ -160,7 +155,7 @@ const Navbar = (props: Props) => {
           )}
         </Toolbar>
       </AppBar>
-    </div>
+    </React.Fragment>
   );
 };
 

@@ -7,8 +7,7 @@ import { connect } from 'react-redux';
 import { getProducts } from '../../store/saga/products/action';
 import { postCart } from '../../store/saga/cart/actions';
 import ButtonField from '../../components/Button';
-import TypographyVariant from '../../components/Typography';
-import { StyledImage } from './style';
+import { StyledImage , StyledTypographyVariant } from './style';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -16,14 +15,15 @@ const useStyles = makeStyles((theme) => ({
   },
   paper: {
     padding: theme.spacing(2),
-    textAlign: 'center',
     color: theme.palette.text.secondary,
+    boxShadow:"none"
   },
 }));
 
 interface Props {
   product: any;
   getProducts: any;
+  postCart: Function;
   [key: string]: any;
 }
 const ProductDetailPage = ({ getProducts, product, postCart }: Props) => {
@@ -35,7 +35,7 @@ const ProductDetailPage = ({ getProducts, product, postCart }: Props) => {
   }, [getProducts]);
   return (
     <>
-      <Box paddingX={[3, 6, 12]} paddingY={4}>
+      <Box id="content"  paddingX={[3, 6, 12]} paddingY={4}>
         <Grid container spacing={3}>
           <Grid item xs={6}>
             <Paper className={classes.paper}>
@@ -44,15 +44,15 @@ const ProductDetailPage = ({ getProducts, product, postCart }: Props) => {
           </Grid>
           <Grid item xs={6}>
             <Paper className={classes.paper}>
-              <TypographyVariant variant="h3">
+              <StyledTypographyVariant variant="h3">
                 {product[0]?.title}
-              </TypographyVariant>
-              <TypographyVariant variant="h5">
+              </StyledTypographyVariant>
+              <StyledTypographyVariant variant="h5">
                 {product[0]?.price}
-              </TypographyVariant>
-              <TypographyVariant variant="subtitle1">
+              </StyledTypographyVariant>
+              <StyledTypographyVariant variant="subtitle1">
                 {product[0]?.description}
-              </TypographyVariant>
+              </StyledTypographyVariant>
               <Box>
                 <input
                   type="button"
@@ -67,7 +67,7 @@ const ProductDetailPage = ({ getProducts, product, postCart }: Props) => {
                 />
               </Box>
               <ButtonField
-                clickHandler={() => postCart(product[0]?._id, quantity)}
+                clickHandler={()=> postCart(product[0]?._id, quantity)}
               >
                 ajouter
               </ButtonField>

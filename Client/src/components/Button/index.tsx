@@ -1,15 +1,16 @@
-import React from 'react';
+import React, { SyntheticEvent } from 'react';
 import Button from '@material-ui/core/Button';
 
 interface Props {
-  clickHandler?: any;
+  clickHandler?: ((event:  SyntheticEvent) => void) | undefined;
+  type?: "button" | "submit" | "reset";
+  children: React.ReactNode;
   [key: string]: any;
 }
 
-const ButtonField = (props: Props) => {
-  const { type, children, clickHandler } = props;
+const ButtonField = ({ type, children, clickHandler , ...otherProps }: Props) => {
   return (
-    <Button type={type} onClick={clickHandler} {...props}>
+    <Button type={type} onClick={clickHandler} {...otherProps} >
       {children}
     </Button>
   );

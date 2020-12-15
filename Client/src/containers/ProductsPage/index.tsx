@@ -5,19 +5,7 @@ import { connect } from 'react-redux';
 import { getProducts } from '../../store/saga/products/action';
 import ProductCard from './ProductCard';
 import { Box } from '@material-ui/core';
-
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    root: {
-    background:'aliceblue',
-    },
-    paper: {
-      padding: theme.spacing(2),
-      textAlign: 'center',
-      color: theme.palette.text.secondary,
-    },
-  }),
-);
+import useStyles from './styles';
 
 interface Props {
   Products: any[];
@@ -33,15 +21,16 @@ const ProductsPage = ({ Products, history, getProducts }: Props) => {
   }, [getProducts]);
 
   return (
-    <Box className={classes.root} paddingX={[3, 6, 12]} paddingY={4}>
+    <Box  id="content" className={classes.root} paddingX={[3, 6, 12]} paddingY={4}>
       <Grid container spacing={3}>
-        {Products.map((product) => (
+        {Products.map((product , index) => (
           <ProductCard
             product={product}
             key={product._id}
             clickHandler={() => {
               history.push('/products/' + product._id);
             }}
+            
           />
         ))}
       </Grid>

@@ -22,8 +22,8 @@ const CartsPage = ({
   updateCartItemQuantity,
 }: CartPageProps) => {
   return (
-    <>
-      <StyledBox paddingX={[3, 6, 12]} paddingY={4} >
+ 
+      <StyledBox paddingX={[3, 6, 12]} id="content" paddingY={4} >
         <TypographyVariant variant="h2" component="h2">
           {' '}
           Shopping cart
@@ -50,7 +50,7 @@ const CartsPage = ({
           </TypographyVariant>
         )}
       </StyledBox>
-    </>
+
   );
 };
 const mapStateToProps = (state: any) => ({

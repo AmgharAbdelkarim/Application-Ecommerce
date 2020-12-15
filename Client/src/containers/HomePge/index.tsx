@@ -16,27 +16,26 @@ const SubscribePage = (props: Props) => {
   return (
     <>
       <Box
+        id="content"
         style={{
           backgroundImage: `url(${images.backgroundImage})`,
           padding: '80px',
-          marginTop: '-80px',
           backgroundSize: 'cover',
-          height: '100%',
         }}
         paddingX={[8, 12]}
       >
-        <Grid container spacing={4} alignItems="center">
-          <Grid xs={12} item>
+        <Grid container direction="column" zeroMinWidth spacing={3} alignItems="center">
+          <Grid xs item>
             <StyledTypographyVariant variant="h2">
               Home Page
             </StyledTypographyVariant>
           </Grid>
-          <Grid xs={12} item>
+          <Grid xs item>
             <StyledTypographyVariant variant="h4">
               bienvenu dans notre store
             </StyledTypographyVariant>
           </Grid>
-          <Grid xs={12} item>
+          <Grid xs item>
             <TypographyVariant
               variant="subtitle1"
               className={{ color: '#fff' }}
@@ -54,7 +53,7 @@ const SubscribePage = (props: Props) => {
               Morbi vel augue dui.
             </TypographyVariant>
           </Grid>
-          <Grid xs={12} item>
+          <Grid xs item>
             <ButtonField
               type="button"
               clickHandler={ClickHandler}

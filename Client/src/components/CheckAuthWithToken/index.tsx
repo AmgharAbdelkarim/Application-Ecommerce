@@ -4,7 +4,7 @@ import { getUserWithToken } from '../../store/api';
 import { LoginSuccess } from '../../store/saga/user/action';
 
 interface Props {
-  Component: any;
+  Component: Function;
   LoginSuccess: Function;
 }
 
@@ -27,12 +27,8 @@ const CheckAuthWithToken = ({ Component, LoginSuccess, ...props }: Props) => {
         setRender(true);
       });
   }, []);
-
-  if (!token) {
-    return <Component {...props} />;
-  }
-
-  return <>{render && <Component {...props} />}</>;
+  return <Component {...props} />;
+  
 };
 const mapDispatchToProps = {
   LoginSuccess,

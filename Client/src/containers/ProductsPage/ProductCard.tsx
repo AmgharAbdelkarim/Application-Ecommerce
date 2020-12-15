@@ -1,42 +1,26 @@
-import React, { useEffect } from 'react';
+import React, { SyntheticEvent } from 'react';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardContent from '@material-ui/core/CardContent';
-import Link from '@material-ui/core/Link';
 import CardMedia from '@material-ui/core/CardMedia';
-import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
-import { connect } from 'react-redux';
-import { getProducts } from '../../store/saga/products/action';
-import { Box } from '@material-ui/core';
+import { IconButton, CardActions } from '@material-ui/core';
+import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
+import useStyles from './styles';
 
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    root: {
-      flexGrow: 1,
-      width: '90%',
-      margin: 'auto',
-    },
-    paper: {
-      padding: theme.spacing(2),
-      textAlign: 'center',
-      color: theme.palette.text.secondary,
-    },
-  }),
-);
 
 interface Props {
   product: any;
-  clickHandler: any;
+  clickHandler: ((event:  SyntheticEvent) => void);
 }
 const ProductCard = ({ product, clickHandler }: Props) => {
   const classes = useStyles();
 
   return (
     <>
-      <Grid item xs={3} onClick={clickHandler}>
-        <Card className={classes.root}>
+      <Grid item xs={3} >
+        <Card className={classes.ProductCardRoot} onClick={clickHandler}>
           <CardActionArea>
             <CardMedia
               component="img"
@@ -46,20 +30,37 @@ const ProductCard = ({ product, clickHandler }: Props) => {
               title={product.title}
             />
             <CardContent>
-              <Typography variant="h5" color="textSecondary" component="p">
+              <Grid container>
+                <Grid item xs={6}>
+
+                <Typography  variant="h5" color="textSecondary" component="p">
                 {product.title}
               </Typography>
-              <Typography variant="h6" color="textSecondary" component="p">
+                </Grid>
+                <Grid item xs={6}>
+
+                <Typography classes={{root : classes.Typography}} variant="h6" color="textSecondary" component="p">
                 {product.price}
               </Typography>
-              <Typography
+                </Grid>
+                <Grid item xs={12}>
+
+                <Typography
                 variant="subtitle2"
                 color="textSecondary"
                 component="p"
               >
                 {product.description}
               </Typography>
+                </Grid>
+              </Grid>
+              
             </CardContent>
+            <CardActions className={classes.cardActions}>
+            <IconButton aria-label="show 4 new mails" color="inherit">
+              <ShoppingCartIcon />
+              </IconButton>
+            </CardActions>
           </CardActionArea>
         </Card>
       </Grid>
