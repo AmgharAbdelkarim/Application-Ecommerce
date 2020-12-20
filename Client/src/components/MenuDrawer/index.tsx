@@ -1,41 +1,24 @@
 import React from 'react';
 import {
-  makeStyles,
-  Theme,
-  createStyles,
-  useTheme,
-} from '@material-ui/core/styles';
-import IconButton from '@material-ui/core/IconButton';
-import {
   Divider,
   List,
   ListItem,
-  ListItemIcon,
   ListItemText,
+  makeStyles,
+  IconButton,
+  Drawer
 } from '@material-ui/core';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import MenuIcon from '@material-ui/icons/Menu';
-import Drawer from '@material-ui/core/Drawer';
 
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
+const useStyles = makeStyles({
     menuButton: {
-      marginRight: theme.spacing(2),
+      marginRight: 16,
     },
     paper: {
       width: '20vw',
     },
-    drawerHeader: {
-      display: 'flex',
-      alignItems: 'center',
-      padding: theme.spacing(0, 1),
-      // necessary for content to be below app bar
-      ...theme.mixins.toolbar,
-      justifyContent: 'flex-end',
-    },
-  }),
-);
+  })
+
 
 const MenuDrawer = ({
   clickHandler,
@@ -44,7 +27,6 @@ const MenuDrawer = ({
   clickHandler: Function;
   LogOut: Function;
 }) => {
-  const theme = useTheme();
   const classes = useStyles();
   const [isDrawerOpen, setIsDrawerOpen] = React.useState(false);
   const logOutHandler = () => {
@@ -68,25 +50,16 @@ const MenuDrawer = ({
         anchor="left"
         open={isDrawerOpen}
         classes={{ paper: classes.paper }}
+        onClose={()=>setIsDrawerOpen(false)}
       >
-        <div className={classes.drawerHeader}>
-          <IconButton onClick={() => setIsDrawerOpen(false)}>
-            {theme.direction === 'ltr' ? (
-              <ChevronLeftIcon />
-            ) : (
-              <ChevronRightIcon />
-            )}
-          </IconButton>
-        </div>
-        <Divider />
         <List>
-          {['Home /', 'Products /products'].map((text, index) => (
+          {[{page : 'Home' , path : '/'},{page : 'Products', path :   '/products'}].map(({page , path}, index) => (
             <ListItem
               button
-              key={text}
-              onClick={() => clickHandler(text.split(' ')[1])}
+              key={page}
+              onClick={() => clickHandler(path)}
             >
-              <ListItemText primary={text.split(' ')[0]} />
+              <ListItemText primary={page} />
             </ListItem>
           ))}
         </List>

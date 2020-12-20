@@ -1,11 +1,10 @@
 import React, { useEffect } from 'react';
-import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import { connect } from 'react-redux';
-import { getProducts } from '../../store/saga/products/action';
+import { getProducts } from 'store/products/action';
 import ProductCard from './ProductCard';
 import { Box } from '@material-ui/core';
-import useStyles from './styles';
+import useStyles from 'containers/ProductsPage/styles';
 
 interface Props {
   Products: any[];

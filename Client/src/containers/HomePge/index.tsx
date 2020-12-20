@@ -1,11 +1,11 @@
 import React from 'react';
-import ButtonField from '../../components/Button';
+import ButtonField from 'components/Button';
 import { connect } from 'react-redux';
-import { getProducts } from '../../store/saga/products/action';
-import images from '../../utils/images';
+import { getProducts } from 'store/products/action';
+import images from 'utils/images';
 import { Box, Grid } from '@material-ui/core';
-import TypographyVariant from '../../components/Typography';
-import { StyledTypographyVariant } from './style';
+import TypographyVariant from 'components/Typography';
+import { StyledTypographyVariant } from 'containers/HomePge/style';
 interface Props {
   [key: string]: any;
 }

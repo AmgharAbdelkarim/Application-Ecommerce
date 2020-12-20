@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import FormPage from './form';
-import { LoginRequest } from '../../store/saga/user/action';
+import FormPage from 'containers/LoginPage/form';
+import { LoginRequest } from 'store/user/action';
 interface Props {
   history: any;
   LoginRequest: any;

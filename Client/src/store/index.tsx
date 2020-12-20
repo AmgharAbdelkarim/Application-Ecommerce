@@ -1,13 +1,12 @@
-import ProductsWatchers from './saga/products/saga';
-import AuthWatchers from './saga/user/saga';
-import CartWatcher from './saga/cart/saga';
+import ProductsWatchers from 'store/products/saga';
+import AuthWatchers from 'store/user/saga';
+import CartWatcher from 'store/cart/saga';
 import { createStore, applyMiddleware } from 'redux';
 import createSagaMiddleware from 'redux-saga';
-import { ProductReducer } from './saga/products/reducer';
+import { ProductReducer } from 'store/products/reducer';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { combineReducers } from 'redux';
-import { AuthReducer } from './saga/user/reducer';
-import { getUserWithToken } from './api';
+import { AuthReducer } from 'store/user/reducer';
 
 export const ConfigureStore = (initialState?: any) => {
   const sagaMiddleware = createSagaMiddleware();

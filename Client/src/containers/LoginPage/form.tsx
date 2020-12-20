@@ -1,7 +1,7 @@
 import React from 'react';
-import TextInput from '../../components/inputField';
-import PasswordInput from '../../components/inputField/password';
-import ButtonField from '../../components/Button';
+import TextInput from 'components/inputField';
+import PasswordInput from 'components/inputField/password';
+import ButtonField from 'components/Button';
 import { Formik, FormikProps, Form } from 'formik';
 
 interface InitialValues {

@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import Container from '@material-ui/core/Container';
 import { Box, Grid, Paper } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { connect } from 'react-redux';
-import { getProducts } from '../../store/saga/products/action';
-import { postCart } from '../../store/saga/cart/actions';
-import ButtonField from '../../components/Button';
-import { StyledImage , StyledTypographyVariant } from './style';
+import { getProducts } from 'store/products/action';
+import { postCart } from 'store/cart/actions';
+import ButtonField from 'components/Button';
+import { StyledImage , StyledTypographyVariant } from 'containers/ProductDetailPage/style';
 
 const useStyles = makeStyles((theme) => ({
   root: {

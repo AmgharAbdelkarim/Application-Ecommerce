@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import TypographyVariant from '../../components/Typography';
+import TypographyVariant from 'components/Typography';
 
 export const StyledImage = styled.img`
   width: 100%;

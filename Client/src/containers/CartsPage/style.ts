@@ -1,9 +1,9 @@
 import { Box } from '@material-ui/core';
 import styled from 'styled-components';
-import TypographyVariant from '../../components/Typography';
+import TypographyVariant from 'components/Typography';
 
 export const StyledImage = styled.img`
-  width: 100%;
+  width: 80px;
   height: 128px;
 `;
 

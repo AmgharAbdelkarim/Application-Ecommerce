@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
-import { cartSelector } from '../../store/saga/user/selectors';
+import React from 'react';
+import { cartSelector } from 'store/user/selectors';
 import { connect } from 'react-redux';
 import CartItem from './CartItem';
-import { Box, Grid } from '@material-ui/core';
+import {  Grid } from '@material-ui/core';
 import {
   deleteCartItem,
   updateCartItemQuantity,
-} from '../../store/saga/cart/actions';
-import TypographyVariant from '../../components/Typography';
-import { StyledBox, StyledTypographyVariant } from './style';
+} from 'store/cart/actions';
+import TypographyVariant from 'components/Typography';
+import { StyledBox, StyledTypographyVariant } from 'containers/CartsPage/style';
 
 export interface CartPageProps {
   items: any[];

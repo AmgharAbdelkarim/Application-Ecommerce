@@ -1,7 +1,7 @@
 import React from 'react';
 import Form from './form';
 import { connect } from 'react-redux';
-import { SubscribeRequest } from '../../store/saga/user/action';
+import { SubscribeRequest } from 'store/user/action';
 
 interface Props {
   history: any;

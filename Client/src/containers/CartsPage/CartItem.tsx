@@ -1,9 +1,8 @@
-import React, { useEffect, useLayoutEffect, useMemo, useState } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import React, { useLayoutEffect,  useState } from 'react';
 import { Box, Grid } from '@material-ui/core';
-import ButtonField from '../../components/Button';
-import TypographyVariant from '../../components/Typography';
-import { StyledImage } from './style';
+import ButtonField from 'components/Button';
+import TypographyVariant from 'components/Typography';
+import { StyledImage } from 'containers/CartsPage/style';
 export interface CartItemProps {
   row: any;
   deleteCartItem: Function;

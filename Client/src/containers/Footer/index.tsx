@@ -4,7 +4,7 @@ import { Grid, Box } from '@material-ui/core';
 const Footer = () => {
   return (
     <Box  id="footer">
-      <Grid container alignItems="center">
+      <Grid style={{height : '100%'}} justify="space-between" container alignItems="center">
         <Grid xs={6} item>
           E-commerce web site
         </Grid>

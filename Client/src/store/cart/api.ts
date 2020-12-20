@@ -1,4 +1,4 @@
-import { baseUrl } from '../../../utils/api';
+import { baseUrl } from '../../utils/api';
 import axios from 'axios';
 
 export const postCartApi = (data: any) => {
