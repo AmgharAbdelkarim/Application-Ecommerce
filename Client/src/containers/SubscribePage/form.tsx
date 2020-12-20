@@ -4,6 +4,7 @@ import PasswordInput from '../../components/inputField/password';
 import ButtonField from '../../components/Button';
 import { Formik, FormikProps, Form } from 'formik';
 import { Grid } from '@material-ui/core';
+import { RouteComponentProps } from 'react-router-dom';
 
 interface InitialValues {
   email: string;
@@ -12,10 +13,8 @@ interface InitialValues {
   address: string;
   password: string;
 }
-interface Props {
-  submit: any;
-  history: any;
-  [key: string]: any;
+interface Props  extends RouteComponentProps {
+  submit: Function;
 }
 const LoginPage = ({ submit, history }: Props) => {
   const initialValues: InitialValues = {

@@ -2,15 +2,15 @@ import React from 'react';
 import { connect } from 'react-redux';
 import FormPage from 'containers/LoginPage/form';
 import { LoginRequest } from 'store/user/action';
-interface Props {
-  history: any;
-  LoginRequest: any;
+import { RouteComponentProps } from 'react-router-dom';
+interface Props extends RouteComponentProps {
+  LoginRequest: Function;
 }
 const LoginPage = ({ history, LoginRequest }: Props) => {
   return (
     <>
       <div>Login Page</div>
-      <FormPage submit={LoginRequest} history={history} />
+      <FormPage submit={(login : string , password : string)=>LoginRequest( login , password , history )}  />
     </>
   );
 };

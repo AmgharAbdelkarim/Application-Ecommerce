@@ -6,12 +6,13 @@ import images from 'utils/images';
 import { Box, Grid } from '@material-ui/core';
 import TypographyVariant from 'components/Typography';
 import { StyledTypographyVariant } from 'containers/HomePge/style';
-interface Props {
-  [key: string]: any;
+import { RouteComponentProps } from 'react-router-dom';
+interface Props extends RouteComponentProps {
+  getProducts: Function;
 }
-const SubscribePage = (props: Props) => {
+const SubscribePage = ({getProducts , history}: Props) => {
   const ClickHandler = () => {
-    props.getProducts(props.history);
+    getProducts(history);
   };
   return (
     <>

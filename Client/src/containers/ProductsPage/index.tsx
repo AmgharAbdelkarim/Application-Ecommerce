@@ -5,12 +5,11 @@ import { getProducts } from 'store/products/action';
 import ProductCard from './ProductCard';
 import { Box } from '@material-ui/core';
 import useStyles from 'containers/ProductsPage/styles';
+import { RouteComponentProps } from 'react-router-dom';
 
-interface Props {
+interface Props  extends RouteComponentProps {
   Products: any[];
-  history: any;
   getProducts: any;
-  [key: string]: any;
 }
 const ProductsPage = ({ Products, history, getProducts }: Props) => {
   const classes = useStyles();
@@ -38,7 +37,6 @@ const ProductsPage = ({ Products, history, getProducts }: Props) => {
 };
 
 const mapStateToProps = (state: any) => {
-  console.log(state);
   return {
     Products: state.ProductReducer,
   };

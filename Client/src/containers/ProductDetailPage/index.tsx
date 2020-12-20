@@ -6,6 +6,7 @@ import { getProducts } from 'store/products/action';
 import { postCart } from 'store/cart/actions';
 import ButtonField from 'components/Button';
 import { StyledImage , StyledTypographyVariant } from 'containers/ProductDetailPage/style';
+import { RouteComponentProps } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -18,11 +19,10 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-interface Props {
-  product: any;
-  getProducts: any;
+interface Props  extends RouteComponentProps<{id : string}> {
+  product: any[];
+  getProducts: Function;
   postCart: Function;
-  [key: string]: any;
 }
 const ProductDetailPage = ({ getProducts, product, postCart }: Props) => {
   const classes = useStyles();
@@ -76,10 +76,8 @@ const ProductDetailPage = ({ getProducts, product, postCart }: Props) => {
     </>
   );
 };
-interface ownProps {
-  [key: string]: any;
-}
-const mapStateToProps = (state: any, props: ownProps) => {
+
+const mapStateToProps = (state: any, props: Props) => {
   return {
     product: state.ProductReducer.filter(
       (e: any) => e._id === props.match.params.id,

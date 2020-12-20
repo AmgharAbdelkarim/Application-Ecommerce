@@ -9,12 +9,10 @@ interface InitialValues {
   password: string;
 }
 
-interface Props {
-  submit: any;
-  history: any;
-  [key: string]: any;
+interface Props   {
+  submit: Function;
 }
-const FormPage = ({ submit, history }: Props) => {
+const FormPage = ({ submit }: Props) => {
   const initialValues: InitialValues = {
     email: 'amghar.abdelkarim1@gmail.com',
     password: 'saham@135ç',
@@ -24,7 +22,7 @@ const FormPage = ({ submit, history }: Props) => {
       <Formik
         initialValues={initialValues}
         onSubmit={(values) => {
-          submit({ login: values.email, password: values.password, history });
+          submit({ login: values.email, password: values.password });
         }}
       >
         {(props: FormikProps<InitialValues>) => {
@@ -41,4 +39,4 @@ const FormPage = ({ submit, history }: Props) => {
   );
 };
 
-export default FormPage;
+export default FormPage ;
